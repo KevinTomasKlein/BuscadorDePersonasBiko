@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import logoBiko from "./logoBiko.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
+import { HomeView } from "./views/HomeView";
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
           />
         </picture>
       </header>
+      <body>
+        <div>
+          <HomeView />
+        </div>
+      </body>
     </div>
   );
 }
