@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
+
+.logo {
+  position: absolute;
+  width: 120px;
+  height: 43.3px;
+  left: 144px;
+  top: 32px;
+  background: #ff4338;
+}
+
+header {
+  position: static;
+  width: 1440px;
+  height: 92px;
+  left: 0px;
+  top: 0px;
+  background: #ffffff;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.header-title {
+  position: static;
+  width: 684px;
+  height: 80px;
+  left: 0px;
+  top: 0px;
+  font-family: Montserrat;
+  font-style: bold;
+  font-weight: bold;
+  font-size: 65.76px;
+  line-height: 80px;
+  color: #132631;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 24px 0px;
+}
+.text-above-header {
+  position: static;
+  width: 684px;
+  height: 64px;
+  left: calc(50% - 684px / 2);
+  top: calc(50% - 64px / 2);
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22.7812px;
+  line-height: 32px;
+
+  color: #132631;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 24px 0px;
+}
+
+.red-text {
+  font-family: Courier Prime;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22.781px;
+  line-height: 32px;
+  color: #e73f39;
+}
+
+.icon-search {
+  width: 60px;
+  height: 60px;
+  background: #e73f39;
+}
