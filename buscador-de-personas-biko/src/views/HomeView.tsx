@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function HomeView() {
@@ -51,18 +52,27 @@ function HomeView() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae
         pretium tellus.
       </p>
-      <div className="input-group">
+      <div className="input-group mb-5">
         <input
           type="text"
           placeholder="Nombre bikoniano"
           className="form-control"
           onChange={(event) => event.target.value}
         ></input>
-        <div className="input-group-append ">
+        {/* <div className="input-group-append ">
           <button className="icon-search btn btn-primary">
             <FontAwesomeIcon icon={faSearch} />
           </button>
-        </div>
+        </div> */}
+        <span className="input-group-btn">
+          <button
+            className="btn btn-danger
+          "
+            type="submit"
+          >
+            <i className="fa fa-search"></i>
+          </button>
+        </span>
       </div>
       <div className="row">{printAllBikoEmployes()}</div>
     </div>
