@@ -7,7 +7,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
   const [error, setError] = useState(null);
-
+  const [searchResults, setSearchResults] = useState("");
+  const searchedPerson: any[] = [];
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get("dataBiko.json");
@@ -15,9 +16,12 @@ function HomeView() {
     };
     fetchData();
   }, []);
+  function getSearchedData(event: any) {
+    setSearchResults(event.target.value);
+  }
 
   function printAllBikoEmployes() {
-    let Result: any = datosBiko.map((employesData) => {
+    let allBikoEmployes: any = datosBiko.map((employesData) => {
       return (
         <div className="col-md-4 col-lg-3">
           <div className="card">
@@ -41,7 +45,51 @@ function HomeView() {
         </div>
       );
     });
-    return Result;
+    return allBikoEmployes;
+  }
+
+  function printSearchedEmploye() {
+    datosBiko.map((employe) => {
+      if (
+        employe["Nombre"]
+          .toString()
+          .toUpperCase()
+          .trim()
+          .includes(searchResults.trim().toUpperCase()) ||
+        employe["Apellidos"]
+          .toString()
+          .toUpperCase()
+          .trim()
+          .includes(searchResults.trim().toUpperCase())
+      ) {
+        searchedPerson.push(employe);
+      }
+    });
+    let searchPersonResults: any = searchedPerson.map((employeData) => {
+      return (
+        <div className="col-md-4 col-lg-3">
+          <div className="card">
+            <img
+              alt="employee-image"
+              className="card-image mx-auto"
+              style={{ width: "200px", height: "200x" }}
+              src={employeData["ImgUrl"]}
+            ></img>
+            <div className="card-body">
+              <h5 className="card-title">
+                {"Nombre: " + employeData["Nombre"]}
+              </h5>
+              <h5 className="card-title">
+                {"Apellido: " + employeData["Apellidos"]}
+              </h5>
+              <p className="card-text">{"Equipo: " + employeData["Equipo"]}</p>
+              <p className="card-text">{"Rol: " + employeData["Rol"]}</p>
+            </div>
+          </div>
+        </div>
+      );
+    });
+    return searchPersonResults;
   }
 
   return (
@@ -57,13 +105,8 @@ function HomeView() {
           type="text"
           placeholder="Nombre bikoniano"
           className="form-control"
-          onChange={(event) => event.target.value}
+          onChange={(event) => getSearchedData(event.target.value)}
         ></input>
-        {/* <div className="input-group-append ">
-          <button className="icon-search btn btn-primary">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </div> */}
         <span className="input-group-btn">
           <button
             className="btn btn-danger
