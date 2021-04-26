@@ -105,7 +105,7 @@ function HomeView() {
           type="text"
           placeholder="Nombre bikoniano"
           className="form-control"
-          onChange={(event) => getSearchedData(event.target.value)}
+          onClick={(event) => getSearchedData(event)}
         ></input>
         <span className="input-group-btn">
           <button
