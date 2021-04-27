@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
-  const [error, setError] = useState(null);
   const [searchResults, setSearchResults] = useState("");
   const searchedPerson: any[] = [];
   useEffect(() => {
@@ -17,31 +16,36 @@ function HomeView() {
     fetchData();
   }, []);
   function getSearchedData(event: any) {
-    setSearchResults(event.target.value);
+    event.preventDefault();
+    setSearchResults(event.target.elements.searchBox.value);
   }
 
   function printAllBikoEmployes() {
     let allBikoEmployes: any = datosBiko.map((employesData) => {
       return (
         <div className="col-md-4 col-lg-3">
-          <div className="card">
-            <img
-              alt="employee-image"
-              className="card-image mx-auto"
-              style={{ width: "200px", height: "200x" }}
-              src={employesData["ImgUrl"]}
-            ></img>
-            <div className="card-body">
-              <h5 className="card-title">
-                {"Nombre: " + employesData["Nombre"]}
-              </h5>
-              <h5 className="card-title">
-                {"Apellido: " + employesData["Apellidos"]}
-              </h5>
-              <p className="card-text">{"Equipo: " + employesData["Equipo"]}</p>
-              <p className="card-text">{"Rol: " + employesData["Rol"]}</p>
+          <Link to="/DetailsView">
+            <div className="card">
+              <img
+                alt="employee-image"
+                className="card-image mx-auto"
+                style={{ width: "200px", height: "200x" }}
+                src={employesData["ImgUrl"]}
+              ></img>
+              <div className="card-body">
+                <h5 className="card-title">
+                  {"Nombre: " + employesData["Nombre"]}
+                </h5>
+                <h5 className="card-title">
+                  {"Apellido: " + employesData["Apellidos"]}
+                </h5>
+                <p className="card-text">
+                  {"Equipo: " + employesData["Equipo"]}
+                </p>
+                <p className="card-text">{"Rol: " + employesData["Rol"]}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       );
     });
@@ -54,13 +58,11 @@ function HomeView() {
         employe["Nombre"]
           .toString()
           .toUpperCase()
-          .trim()
-          .includes(searchResults.trim().toUpperCase()) ||
+          .includes(searchResults.toUpperCase()) ||
         employe["Apellidos"]
           .toString()
           .toUpperCase()
-          .trim()
-          .includes(searchResults.trim().toUpperCase())
+          .includes(searchResults.toUpperCase())
       ) {
         searchedPerson.push(employe);
       }
@@ -100,12 +102,16 @@ function HomeView() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae
         pretium tellus.
       </p>
-      <div className="input-group mb-5">
+
+      <form
+        className="input-group mb-5"
+        onSubmit={(event) => getSearchedData(event)}
+      >
         <input
-          type="text"
+          type="search"
           placeholder="Nombre bikoniano"
           className="form-control"
-          onChange={(event) => getSearchedData(event.target.value)}
+          id="searchBox"
         ></input>
         <span className="input-group-btn">
           <button
@@ -116,8 +122,11 @@ function HomeView() {
             <i className="fa fa-search"></i>
           </button>
         </span>
+      </form>
+
+      <div className="row">
+        {searchResults === "" ? printAllBikoEmployes() : printSearchedEmploye()}
       </div>
-      <div className="row">{printAllBikoEmployes()}</div>
     </div>
   );
 }
