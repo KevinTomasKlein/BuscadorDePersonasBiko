@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
   const [searchResults, setSearchResults] = useState("");
@@ -14,35 +13,40 @@ function HomeView() {
       setDatosBiko(data);
     };
     fetchData();
-  }, []);
+  }, [searchResults]);
   function getSearchedData(event: any) {
     event.preventDefault();
     setSearchResults(event.target.elements.searchBox.value);
   }
 
   function printAllBikoEmployes() {
-    let allBikoEmployes: any = datosBiko.map((employesData) => {
+    let allBikoEmployes: any = datosBiko.map((employeData) => {
       return (
         <div className="col-md-4 col-lg-3">
-          <Link to="/DetailsView">
+          <Link
+            to={{
+              pathname: `/Employe/${employeData["Nombre"]} & ${employeData["Apellidos"]}`,
+              state: { employeData },
+            }}
+          >
             <div className="card">
               <img
                 alt="employee-image"
                 className="card-image mx-auto"
                 style={{ width: "200px", height: "200x" }}
-                src={employesData["ImgUrl"]}
+                src={employeData["ImgUrl"]}
               ></img>
               <div className="card-body">
                 <h5 className="card-title">
-                  {"Nombre: " + employesData["Nombre"]}
+                  {"Nombre: " + employeData["Nombre"]}
                 </h5>
                 <h5 className="card-title">
-                  {"Apellido: " + employesData["Apellidos"]}
+                  {"Apellido: " + employeData["Apellidos"]}
                 </h5>
                 <p className="card-text">
-                  {"Equipo: " + employesData["Equipo"]}
+                  {"Equipo: " + employeData["Equipo"]}
                 </p>
-                <p className="card-text">{"Rol: " + employesData["Rol"]}</p>
+                <p className="card-text">{"Rol: " + employeData["Rol"]}</p>
               </div>
             </div>
           </Link>
@@ -70,24 +74,33 @@ function HomeView() {
     let searchPersonResults: any = searchedPerson.map((employeData) => {
       return (
         <div className="col-md-4 col-lg-3">
-          <div className="card">
-            <img
-              alt="employee-image"
-              className="card-image mx-auto"
-              style={{ width: "200px", height: "200x" }}
-              src={employeData["ImgUrl"]}
-            ></img>
-            <div className="card-body">
-              <h5 className="card-title">
-                {"Nombre: " + employeData["Nombre"]}
-              </h5>
-              <h5 className="card-title">
-                {"Apellido: " + employeData["Apellidos"]}
-              </h5>
-              <p className="card-text">{"Equipo: " + employeData["Equipo"]}</p>
-              <p className="card-text">{"Rol: " + employeData["Rol"]}</p>
+          <Link
+            to={{
+              pathname: `/Employe/${employeData["Nombre"]} & ${employeData["Apellidos"]}`,
+              state: { employeData },
+            }}
+          >
+            <div className="card">
+              <img
+                alt="employee-image"
+                className="card-image mx-auto"
+                style={{ width: "200px", height: "200x" }}
+                src={employeData["ImgUrl"]}
+              ></img>
+              <div className="card-body">
+                <h5 className="card-title">
+                  {"Nombre: " + employeData["Nombre"]}
+                </h5>
+                <h5 className="card-title">
+                  {"Apellido: " + employeData["Apellidos"]}
+                </h5>
+                <p className="card-text">
+                  {"Equipo: " + employeData["Equipo"]}
+                </p>
+                <p className="card-text">{"Rol: " + employeData["Rol"]}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       );
     });

@@ -1,32 +1,32 @@
-export function DetailsView() {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+export function DetailsView({ location }: any) {
+  const employeDetails = location.state.employeData;
+
   return (
-    <div className="container">
-      <h1 className="header-title">Busca Bikonianos</h1>
-      <p className="red-text">(lorem ipsum dolor set)</p>
-      <p className="text-above-header">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae
-        pretium tellus.
-      </p>
-
-      <form className="input-group mb-5">
-        <input
-          type="search"
-          placeholder="Nombre bikoniano"
-          className="form-control"
-          id="searchBox"
-        ></input>
-        <span className="input-group-btn">
-          <button
-            className="btn btn-danger
-          "
-            type="submit"
-          >
-            <i className="fa fa-search"></i>
-          </button>
-        </span>
-      </form>
-
-      <div className="row"></div>
+    <div className="container-fluid ">
+      <div className="row">
+        <div className="card-horizontal ">
+          <img
+            alt="employe-image"
+            className="card-image mx-auto"
+            style={{ width: "729.57px", height: "711.28px" }}
+            src={employeDetails["ImgUrl"]}
+          ></img>
+          <div className="card-body text-left">
+            <p className="card-title text">{employeDetails["Nombre"]}</p>
+            <h5 className="card-title bold-text">
+              {employeDetails["Apellidos"]}
+            </h5>
+            <p className="card-text red-text">
+              {"(" + employeDetails["Equipo"] + ")"}
+            </p>
+            <p className="card-text">{"Rol: " + employeDetails["Rol"]}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
