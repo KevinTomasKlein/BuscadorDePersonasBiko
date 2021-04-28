@@ -7,7 +7,6 @@
   height: 43.3px;
   left: 144px;
   top: 32px;
-  background: #ff4338;
 }
 
 header {
@@ -24,40 +23,12 @@ header {
 }
 
 .displayContainer {
+  position: absolute;
   width: 1440px;
   height: 707px;
   left: 0px;
   top: 112px;
-  background: #ffffff;
 }
-
-.employe-img {
-  position: absolute;
-  left: -6.57px;
-  top: -2.14px;
-}
-
-/* .employe-details {
-  position: static;
-  width: 684px;
-  height: 144px;
-  left: 0px;
-  top: 0px;
-
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 58.455px;
-  line-height: 72px;
-
-  color: #132631;
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-  margin: 24px 0px;
-} */
 
 .red-text {
   font-family: Courier Prime;
@@ -68,7 +39,7 @@ header {
   color: #e73f39;
 }
 
-.text {
+.title-text {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 200;
@@ -76,7 +47,7 @@ header {
   line-height: 72px;
 }
 
-.bold-text {
+.bold-title-text {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bolder;
@@ -85,7 +56,29 @@ header {
   color: #132631;
 }
 
-.card-horizontal {
-  display: flex;
-  flex: 1 1 auto;
+.bold-text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #132631;
+  margin: 0px 12px;
+}
+
+.normal-text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20.25px;
+  line-height: 28px;
+  color: #132631;
+}
+
+.date-text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
 }

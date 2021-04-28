@@ -26,7 +26,7 @@ function HomeView() {
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} & ${employeData["Apellidos"]}`,
-              state: { employeData },
+              state: { employeData: employeData, AllEmployes: datosBiko },
             }}
           >
             <div className="card">
@@ -77,7 +77,7 @@ function HomeView() {
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} & ${employeData["Apellidos"]}`,
-              state: { employeData },
+              state: { employeData: employeData, AllEmployes: datosBiko },
             }}
           >
             <div className="card">
