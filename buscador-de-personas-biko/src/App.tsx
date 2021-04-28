@@ -1,5 +1,3 @@
-import React from "react";
-import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import HomeView from "./views/HomeView";
@@ -24,9 +22,10 @@ function App() {
         <body>
           <div>
             <Switch>
-              <Route path="/Employe/:Id:Nombre" component={DetailsView} />
-
-              <Route path="/DetailsView" component={DetailsView} />
+              <Route
+                path="/Employe/:Nombre:Apellidos"
+                component={DetailsView}
+              />
 
               <Route path="/" exact component={HomeView} />
             </Switch>
