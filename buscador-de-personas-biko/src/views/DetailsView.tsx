@@ -1,15 +1,29 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import { Link, useRouteMatch, useParams } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 export function DetailsView({ location }: any) {
   const employeDetails = location.state.employeData;
   const AllEmployes: any[] = location.state.AllEmployes;
   const teamMembers: any[] = [];
   let { url } = useRouteMatch();
-  let Id = useParams();
-  console.log(Id);
+
+  function getDate() {
+    if (employeDetails["Fecha incorporación a Biko"] !== undefined) {
+      return (
+        <div className="d-inline-flex col-md-1 ">
+          <FontAwesomeIcon icon={faCalendar} />
+          <p className=" date-text ml-2 mr-1">Desde </p>
+          <p className="mx-0 bold-text">
+            {employeDetails["Fecha incorporación a Biko"].split("/")[2]}
+          </p>
+        </div>
+      );
+    } else {
+      return "";
+    }
+  }
 
   function GetTeamMembers() {
     AllEmployes.map((employe) => {
@@ -26,13 +40,12 @@ export function DetailsView({ location }: any) {
           <div key={teamMember}>
             <Link
               to={{
-                pathname: `/Employe/${teamMember["Nombre"]} ${teamMember["Apellidos"]}`,
+                pathname: `${url}`,
                 state: { employeData: teamMember, AllEmployes: AllEmployes },
               }}
             >
               <div className="card">
                 <img
-                  key={teamMember["Equipo"]}
                   alt="employee-image"
                   className="card-image mx-auto"
                   style={{ width: "200px", height: "200x" }}
@@ -69,16 +82,7 @@ export function DetailsView({ location }: any) {
                 <FontAwesomeIcon icon={faRocket} />
                 <p className=" bold-text">{employeDetails["Equipo"]}</p>
               </div>
-
-              <div className="d-inline-flex col-md-1 ">
-                <FontAwesomeIcon icon={faCalendar} />
-                <p className=" date-text ml-2 mr-1">Desde </p>
-                <p className="mx-0 bold-text">
-                  {employeDetails["Fecha incorporación a Biko"] !== undefined
-                    ? employeDetails["Fecha incorporación a Biko"].split("/")[2]
-                    : ""}
-                </p>
-              </div>
+              {getDate()}
             </div>
             <p className="card-text">{"Rol: " + employeDetails["Rol"]}</p>
           </div>

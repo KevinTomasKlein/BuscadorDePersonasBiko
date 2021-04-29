@@ -3,7 +3,7 @@ import "./App.css";
 import HomeView from "./views/HomeView";
 import "./styles/layoutHomeView.css";
 import "./styles/layoutDetailsView.css";
-import { Route, BrowserRouter, Switch, Router } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { DetailsView } from "./views/DetailsView";
 import logoBiko from "./images/logoBiko.png";
 import React from "react";

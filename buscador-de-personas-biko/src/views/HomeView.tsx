@@ -7,6 +7,7 @@ function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
   const [searchResults, setSearchResults] = useState("");
   const searchedPerson: any[] = [];
+
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get("dataBiko.json");
