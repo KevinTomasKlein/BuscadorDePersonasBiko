@@ -11,7 +11,7 @@ import React from "react";
 function App() {
   return (
     <BrowserRouter>
-      <div className="overflow-hidden">
+      <div className="landing">
         <header>
           <picture>
             <source srcSet={logoBiko} type="png" />
@@ -21,13 +21,11 @@ function App() {
           </picture>
         </header>
         <body>
-          <div>
-            <Switch>
-              <Route path="/Employe/:Nombre" component={DetailsView} />
+          <Switch>
+            <Route path="/Employe/:Nombre" component={DetailsView} />
 
-              <Route path="/" exact component={HomeView} />
-            </Switch>
-          </div>
+            <Route path="/" exact component={HomeView} />
+          </Switch>
         </body>
       </div>
     </BrowserRouter>

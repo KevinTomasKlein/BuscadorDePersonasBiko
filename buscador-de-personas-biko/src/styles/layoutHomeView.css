@@ -1,46 +1,124 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
 
+.landing {
+  position: relative;
+  width: 1440px;
+  height: 1596px;
+
+  /* Biko/Neutros/Blanco */
+
+  background: #ffffff;
+}
+
 .logo {
   position: absolute;
   width: 120px;
   height: 43.3px;
-  left: 144px;
-  top: 32px;
+  left: 1176px;
+  top: 41px;
 }
 
-header {
-  position: static;
+.header-container {
+  position: absolute;
   width: 1440px;
-  height: 92px;
+  height: 420px;
   left: 0px;
   top: 0px;
+
+  /* Biko/Neutros/Blanco */
+
   background: #ffffff;
+}
+.header-auto-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: absolute;
+  width: 684px;
+  height: 366px;
+  left: 142px;
+  top: 20px;
+}
+.header-title-container {
+  position: absolute;
+  width: 978px;
+  height: 166px;
+  left: 0px;
+  top: 30px;
+}
+
+.header-title-auto-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 684px;
+  height: 128px;
+  left: 0px;
+  top: 0px;
+}
+
+/*Frame 78*/
+.header-title-inside-auto-layout {
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin: 0px 0px;
+  margin: 48px 0px;
 }
 
-.header-title {
+.header-title-font {
   position: static;
   width: 684px;
-  height: 80px;
+  height: 72px;
   left: 0px;
   top: 0px;
+
   font-family: Montserrat;
-  font-style: bold;
-  font-weight: bold;
-  font-size: 65.76px;
-  line-height: 80px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 65.758px;
+  line-height: 72px;
+  /* identical to box height, or 109% */
+
+  /* Biko/principales/10 */
+
   color: #132631;
+}
+
+.header-title-font-inside {
   flex: none;
   order: 0;
   align-self: stretch;
   flex-grow: 0;
   margin: 24px 0px;
 }
-.text-above-header {
+.normal-text {
+  position: absolute;
+  width: 684px;
+  height: 64px;
+  left: 146px;
+  top: 224px;
+}
+
+.text-search-box-auto-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: absolute;
+  width: 684px;
+  height: 64px;
+  left: 146px;
+  top: 224px;
+}
+
+.normal-text-details {
   position: static;
   width: 684px;
   height: 64px;
@@ -50,29 +128,129 @@ header {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 300;
-  font-size: 22.7812px;
+  font-size: 22.78px;
   line-height: 32px;
+  /* or 140% */
+
+  /* Biko/principales/10 */
 
   color: #132631;
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-  margin: 24px 0px;
 }
 
-.red-text {
-  font-family: Courier Prime;
+.header-red-text {
+  position: static;
+  width: 315px;
+  height: 32px;
+  left: 0px;
+  top: 96px;
+
+  font-family: Courier;
   font-style: normal;
   font-weight: normal;
-  font-size: 22.781px;
+  font-size: 22.78px;
   line-height: 32px;
   color: #e73f39;
 }
 
-.icon-search {
+.header-red-text-inside {
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 24px 0px;
+}
+
+.search-box-container {
+  position: absolute;
+  width: 765px;
+  height: 156px;
+  left: 146px;
+  top: 224px;
+}
+
+.main-container {
+  position: absolute;
+  width: 1440px;
+  height: 1314px;
+  left: 0px;
+  top: 176px;
+}
+
+.icon-container {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 869px;
+  top: 338px;
+}
+
+.btn-container {
+  position: absolute;
   width: 60px;
   height: 60px;
+  left: 851px;
+  top: 320px;
+
+  /* Biko/principales/00 */
+
   background: #e73f39;
+}
+
+.input-box-auto-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+
+  position: absolute;
+  width: 706px;
+  height: 60px;
+  left: 146px;
+  top: 320px;
+
+  /* Biko/Neutros/Blanco */
+
+  background: #ffffff;
+  /* Biko/principales/-13 */
+
+  border: 2px solid #c4c9cc;
+  box-sizing: border-box;
+}
+.grid-container-auto-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: absolute;
+  width: 1152px;
+  height: 852px;
+  left: 142px;
+  top: 454px;
+}
+
+.grid-auto-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 858px;
+  height: 264px;
+  left: 0px;
+  top: 588px;
+}
+.inside-grid-auto-layout {
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin: 30px 0px;
+}
+.grid-image {
+  position: absolute;
+  width: 272.45px;
+  height: 265.6px;
+  left: -2.45px;
+  top: -0.8px;
 }
