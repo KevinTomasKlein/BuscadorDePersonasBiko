@@ -25,7 +25,7 @@ function HomeView() {
         <div className="col-md-4 col-lg-3">
           <Link
             to={{
-              pathname: `/Employe/${employeData["Nombre"]} & ${employeData["Apellidos"]}`,
+              pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
               state: { employeData: employeData, AllEmployes: datosBiko },
             }}
           >
@@ -37,16 +37,7 @@ function HomeView() {
                 src={employeData["ImgUrl"]}
               ></img>
               <div className="card-body">
-                <h5 className="card-title">
-                  {"Nombre: " + employeData["Nombre"]}
-                </h5>
-                <h5 className="card-title">
-                  {"Apellido: " + employeData["Apellidos"]}
-                </h5>
-                <p className="card-text">
-                  {"Equipo: " + employeData["Equipo"]}
-                </p>
-                <p className="card-text">{"Rol: " + employeData["Rol"]}</p>
+                <h5 className="card-title">{employeData["Nombre"]}</h5>
               </div>
             </div>
           </Link>
@@ -76,7 +67,7 @@ function HomeView() {
         <div className="col-md-4 col-lg-3">
           <Link
             to={{
-              pathname: `/Employe/${employeData["Nombre"]} & ${employeData["Apellidos"]}`,
+              pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
               state: { employeData: employeData, AllEmployes: datosBiko },
             }}
           >
@@ -88,16 +79,7 @@ function HomeView() {
                 src={employeData["ImgUrl"]}
               ></img>
               <div className="card-body">
-                <h5 className="card-title">
-                  {"Nombre: " + employeData["Nombre"]}
-                </h5>
-                <h5 className="card-title">
-                  {"Apellido: " + employeData["Apellidos"]}
-                </h5>
-                <p className="card-text">
-                  {"Equipo: " + employeData["Equipo"]}
-                </p>
-                <p className="card-text">{"Rol: " + employeData["Rol"]}</p>
+                <h5 className="card-title">{employeData["Nombre"]}</h5>
               </div>
             </div>
           </Link>
