@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch, useParams } from "react-router-dom";
 
 export function DetailsView({ location }: any) {
   const employeDetails = location.state.employeData;
   const AllEmployes: any[] = location.state.AllEmployes;
   const teamMembers: any[] = [];
+  let { url } = useRouteMatch();
+  let Id = useParams();
+  console.log(Id);
 
-  function getTeamMembers() {
+  function GetTeamMembers() {
     AllEmployes.map((employe) => {
       if (
         employe["Equipo"] === employeDetails["Equipo"] &&
@@ -17,21 +20,27 @@ export function DetailsView({ location }: any) {
         teamMembers.push(employe);
       }
     });
-
     return (
       <div className="d-flex">
         {teamMembers.map((teamMember) => (
-          <Link to="/">
-            <div className="card">
-              <img
-                key={teamMember["Equipo"]}
-                alt="employee-image"
-                className="card-image mx-auto"
-                style={{ width: "200px", height: "200x" }}
-                src={teamMember["ImgUrl"]}
-              ></img>
-            </div>
-          </Link>
+          <div key={teamMember}>
+            <Link
+              to={{
+                pathname: `/Employe/${teamMember["Nombre"]} ${teamMember["Apellidos"]}`,
+                state: { employeData: teamMember, AllEmployes: AllEmployes },
+              }}
+            >
+              <div className="card">
+                <img
+                  key={teamMember["Equipo"]}
+                  alt="employee-image"
+                  className="card-image mx-auto"
+                  style={{ width: "200px", height: "200x" }}
+                  src={teamMember["ImgUrl"]}
+                ></img>
+              </div>
+            </Link>
+          </div>
         ))}
       </div>
     );
@@ -77,7 +86,7 @@ export function DetailsView({ location }: any) {
         <p className="bold-subtitle-text">Otra gente de fenix</p>
       </div>
       <div className="container">
-        <div className="card-group">{getTeamMembers()}</div>
+        <div className="card-group">{GetTeamMembers()}</div>
       </div>
     </div>
   );

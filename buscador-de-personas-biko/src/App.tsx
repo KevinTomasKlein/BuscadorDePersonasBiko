@@ -3,9 +3,10 @@ import "./App.css";
 import HomeView from "./views/HomeView";
 import "./styles/layoutHomeView.css";
 import "./styles/layoutDetailsView.css";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Switch, Router } from "react-router-dom";
 import { DetailsView } from "./views/DetailsView";
 import logoBiko from "./images/logoBiko.png";
+import React from "react";
 
 function App() {
   return (
@@ -22,10 +23,7 @@ function App() {
         <body>
           <div>
             <Switch>
-              <Route
-                path="/Employe/:Nombre:Apellidos"
-                component={DetailsView}
-              />
+              <Route path="/Employe/:Nombre" component={DetailsView} />
 
               <Route path="/" exact component={HomeView} />
             </Switch>
