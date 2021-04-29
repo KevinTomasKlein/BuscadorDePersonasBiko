@@ -23,24 +23,18 @@ function HomeView() {
   function printAllBikoEmployes() {
     let allBikoEmployes: any = datosBiko.map((employeData) => {
       return (
-        <div className="col-md-4 col-lg-3">
+        <div className="grid-auto-layout inside-grid-auto-layout">
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
               state: { employeData: employeData, AllEmployes: datosBiko },
             }}
           >
-            <div className="card">
-              <img
-                alt="employee-image"
-                className="card-image mx-auto"
-                style={{ width: "200px", height: "200x" }}
-                src={employeData["ImgUrl"]}
-              ></img>
-              <div className="card-body">
-                <h5 className="card-title">{employeData["Nombre"]}</h5>
-              </div>
-            </div>
+            <img
+              alt="employe-image"
+              style={{ width: "266.4px", height: "265.6px" }}
+              src={employeData["ImgUrl"]}
+            ></img>
           </Link>
         </div>
       );
@@ -65,24 +59,18 @@ function HomeView() {
     });
     let searchPersonResults: any = searchedPerson.map((employeData) => {
       return (
-        <div className="col-md-4 col-lg-3">
+        <div className=" inside-grid-auto-layout">
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
               state: { employeData: employeData, AllEmployes: datosBiko },
             }}
           >
-            <div className="card">
-              <img
-                alt="employee-image"
-                className="card-image mx-auto"
-                style={{ width: "200px", height: "200x" }}
-                src={employeData["ImgUrl"]}
-              ></img>
-              <div className="card-body">
-                <h5 className="card-title">{employeData["Nombre"]}</h5>
-              </div>
-            </div>
+            <img
+              alt="employee-image"
+              style={{ width: "266.4px", height: "265.6px" }}
+              src={employeData["ImgUrl"]}
+            ></img>
           </Link>
         </div>
       );
@@ -91,37 +79,43 @@ function HomeView() {
   }
 
   return (
-    <div className="container">
-      <h1 className="header-title">Busca Bikonianos</h1>
-      <p className="red-text">(lorem ipsum dolor set)</p>
-      <p className="text-above-header">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae
-        pretium tellus.
-      </p>
-
-      <form
-        className="input-group mb-5"
-        onSubmit={(event) => getSearchedData(event)}
-      >
-        <input
-          type="search"
-          placeholder="Nombre bikoniano"
-          className="form-control"
-          id="searchBox"
-        ></input>
-        <span className="input-group-btn">
-          <button
-            className="btn btn-danger
-          "
-            type="submit"
-          >
-            <i className="fa fa-search"></i>
-          </button>
-        </span>
-      </form>
-
-      <div className="row">
-        {searchResults === "" ? printAllBikoEmployes() : printSearchedEmploye()}
+    <div className=" ">
+      <div className="header-container">
+        <div className="header-title-container ">
+          <div className=" header-auto-layout ">
+            <div className="header-title-auto-layout ">
+              <h1 className="header-title-font header-title-font-inside">
+                Busca Bikonianos
+              </h1>
+              <p className="header-red-text header-red-text-inside">
+                (lorem ipsum dolor set)
+              </p>
+            </div>
+            <div className="search-box-container main-container ">
+              <p className="normal-text normal-text-details text-search-box-auto-layout ">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+                vitae pretium tellus.
+              </p>
+              <form className=" " onSubmit={(event) => getSearchedData(event)}>
+                <input
+                  type="text"
+                  placeholder="Nombre bikoniano"
+                  className="input-box-auto-layout "
+                  id="searchBox"
+                ></input>
+                <button
+                  className="icon-container btn-container"
+                  type="submit"
+                ></button>
+              </form>
+              <div className="grid-container-auto-layout">
+                {searchResults === ""
+                  ? printAllBikoEmployes()
+                  : printSearchedEmploye()}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
