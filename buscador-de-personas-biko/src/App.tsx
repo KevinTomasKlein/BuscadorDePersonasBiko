@@ -11,16 +11,9 @@ import React from "react";
 function App() {
   return (
     <BrowserRouter>
-      <div className="landing">
-        <header>
-          <picture>
-            <source srcSet={logoBiko} type="png" />
-            <a href="/">
-              <img src={logoBiko} className="logo" alt="logo" />{" "}
-            </a>
-          </picture>
-        </header>
-        <body>
+      <div className="">
+        <header className=""></header>
+        <body className="">
           <Switch>
             <Route path="/Employe/:Nombre" component={DetailsView} />
 

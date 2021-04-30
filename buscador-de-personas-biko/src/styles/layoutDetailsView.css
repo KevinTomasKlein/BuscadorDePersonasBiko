@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap");
 
-.logo {
+/* .logo {
   position: absolute;
   width: 120px;
   height: 43.3px;
   left: 144px;
   top: 32px;
-}
-
+} */
+/* 
 header {
   position: static;
   width: 1440px;
@@ -20,7 +20,7 @@ header {
   order: 0;
   flex-grow: 0;
   margin: 0px 0px;
-}
+} */
 
 .red-text {
   font-family: Courier Prime;
