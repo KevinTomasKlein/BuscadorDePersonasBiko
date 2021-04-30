@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
-
+import logoBiko from "../images/logoBiko.png";
+import "bootstrap/dist/css/bootstrap.css";
 function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
   const [searchResults, setSearchResults] = useState("");
@@ -23,7 +24,7 @@ function HomeView() {
   function printAllBikoEmployes() {
     let allBikoEmployes: any = datosBiko.map((employeData) => {
       return (
-        <div className="grid-auto-layout inside-grid-auto-layout">
+        <div className="search-profile inside-search-profile ">
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
@@ -59,7 +60,7 @@ function HomeView() {
     });
     let searchPersonResults: any = searchedPerson.map((employeData) => {
       return (
-        <div className=" inside-grid-auto-layout">
+        <div className=" search-profile inside-search-profile col-sm-3">
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
@@ -79,43 +80,58 @@ function HomeView() {
   }
 
   return (
-    <div className=" ">
-      <div className="header-container">
-        <div className="header-title-container ">
-          <div className=" header-auto-layout ">
-            <div className="header-title-auto-layout ">
-              <h1 className="header-title-font header-title-font-inside">
-                Busca Bikonianos
+    <div className="landing">
+      <div className="header">
+        <div className="">
+          <picture>
+            <source srcSet={logoBiko} type="png" />
+            <a href="/">
+              <img src={logoBiko} className="logo" alt="logo" />
+            </a>
+          </picture>
+          <div className="header-auto-layout">
+            <div className="header-text-container">
+              <h1 className="title">
+                Busca <strong>Bikonianos</strong>
               </h1>
-              <p className="header-red-text header-red-text-inside">
-                (lorem ipsum dolor set)
-              </p>
-            </div>
-            <div className="search-box-container main-container ">
-              <p className="normal-text normal-text-details text-search-box-auto-layout ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                vitae pretium tellus.
-              </p>
-              <form className=" " onSubmit={(event) => getSearchedData(event)}>
-                <input
-                  type="text"
-                  placeholder="Nombre bikoniano"
-                  className="input-box-auto-layout "
-                  id="searchBox"
-                ></input>
-                <button
-                  className="icon-container btn-container"
-                  type="submit"
-                ></button>
-              </form>
-              <div className="grid-container-auto-layout">
-                {searchResults === ""
-                  ? printAllBikoEmployes()
-                  : printSearchedEmploye()}
-              </div>
+              <p className="red-text">(lorem ipsum dolor set)</p>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="item">
+        <div className="text-container">
+          <p style={{ marginTop: "50px" }} className=" item-text ">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae
+            pretium tellus.
+          </p>
+        </div>
+
+        <div>
+          <form onSubmit={(event) => getSearchedData(event)}>
+            <div className="">
+              <input
+                type="search"
+                placeholder="Nombre bikoniano"
+                className="input input-text"
+                id="searchBox"
+              ></input>
+              <span>
+                <button className="btn-container" type="submit">
+                  <i className="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className=" ">
+        {/* <div className="">
+          {searchResults === ""
+            ? printAllBikoEmployes()
+            : printSearchedEmploye()}
+        </div> */}
       </div>
     </div>
   );
