@@ -55,12 +55,12 @@ function HomeView() {
       if (
         employe["Nombre"]
           .toString()
-          .toUpperCase()
-          .includes(searchResults.toUpperCase()) ||
+          .toLowerCase()
+          .includes(searchResults.toLowerCase()) ||
         employe["Apellidos"]
           .toString()
-          .toUpperCase()
-          .includes(searchResults.toUpperCase())
+          .toLowerCase()
+          .includes(searchResults.toLowerCase())
       ) {
         searchedPerson.push(employe);
       }
