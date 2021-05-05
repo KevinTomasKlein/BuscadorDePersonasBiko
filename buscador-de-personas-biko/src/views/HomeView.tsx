@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 import logoBiko from "../images/logoBiko.png";
 import "bootstrap/dist/css/bootstrap.css";
+import { SearchOutlined } from "@ant-design/icons";
 function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
   const [searchResults, setSearchResults] = useState("");
@@ -133,7 +134,11 @@ function HomeView() {
               ></input>
               <span>
                 <button className="btn-container" type="submit">
-                  <i className="fa fa-search"></i>
+                  {
+                    <SearchOutlined
+                      style={{ color: "white", fontSize: "25px" }}
+                    />
+                  }
                 </button>
               </span>
             </div>
