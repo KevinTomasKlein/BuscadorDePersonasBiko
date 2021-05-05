@@ -1,6 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket } from "@fortawesome/free-solid-svg-icons";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { RocketOutlined } from "@ant-design/icons";
 import { Link, useRouteMatch } from "react-router-dom";
 import logoBiko from "../images/logoBiko.png";
@@ -20,9 +17,8 @@ export function DetailsView({ location }: any) {
           <CalendarOutlined className="calendar" />
 
           <p className="calendar-text">
-            {"Desde" +
-              " " +
-              employeDetails["Fecha incorporación a Biko"].split("/")[2]}
+            {"Desde" + " "}
+            <b>{employeDetails["Fecha incorporación a Biko"].split("/")[2]}</b>
           </p>
         </div>
       );
@@ -123,12 +119,11 @@ export function DetailsView({ location }: any) {
         src={employeDetails["ImgUrl"]}
       ></img>
       <div className="data-container">
-        <p className="side-bold-text">
-          {employeDetails["Nombre"] + " "}
-          <span style={{ fontWeight: "bold" }}>
-            {employeDetails["Apellidos"]}
-          </span>
-        </p>
+        <h1 className="side-bold-text">{employeDetails["Nombre"] + " "}</h1>
+        <h1 className="side-bold-text">
+          <b>{employeDetails["Apellidos"]}</b>
+        </h1>
+
         <p className="side-red-text">{"(" + employeDetails["Rol"] + ")"}</p>
 
         <div className="icons-container">
