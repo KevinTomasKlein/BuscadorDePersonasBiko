@@ -8,8 +8,7 @@ import { SearchOutlined } from "@ant-design/icons";
 function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
   const [searchResults, setSearchResults] = useState("");
-  const searchedPerson: any[] = [];
-
+  const employes: any[] = [];
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get("dataBiko.json");
@@ -22,51 +21,20 @@ function HomeView() {
     setSearchResults(event.target.elements.searchBox.value);
   }
 
-  function printAllBikoEmployes() {
-    let allBikoEmployes: any = datosBiko.map((employeData) => {
-      return (
-        <div className="perfil-buscador card">
-          <Link
-            to={{
-              pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
-              state: { employeData: employeData, AllEmployes: datosBiko },
-            }}
-          >
-            <img
-              alt="employe-image"
-              src={employeData["ImgUrl"]}
-              className="picture-grid"
-            ></img>
-            <div className="img_description_layer">
-              <div className="img_text_container img_employe_data">
-                <p className="monstserrat">{employeData["Nombre"]}</p>
-                <p className="monstserrat">{employeData["Apellidos"]}</p>
-                <p className="monstserrat-normal">{employeData["Rol"]}</p>
-              </div>
-            </div>
-          </Link>
-        </div>
-      );
-    });
-    return allBikoEmployes;
-  }
-
-  function printSearchedEmploye() {
+  function printEmployes() {
     datosBiko.map((employe) => {
-      if (
-        employe["Nombre"]
-          .toString()
-          .toLowerCase()
-          .includes(searchResults.toLowerCase()) ||
-        employe["Apellidos"]
-          .toString()
-          .toLowerCase()
-          .includes(searchResults.toLowerCase())
-      ) {
-        searchedPerson.push(employe);
+      let info =
+        employe["Nombre"].toString().toLowerCase() +
+        " " +
+        employe["Apellidos"].toString().toLowerCase();
+      if (info.includes(searchResults.toLowerCase().trim())) {
+        employes.push(employe);
       }
     });
-    let searchPersonResults: any = searchedPerson.map((employeData) => {
+    if (employes.length === 0) {
+      return <p className="input-error">¡¡¡¡Ese Bikoniano no existe!!!!</p>;
+    }
+    let searchPersonResults: any = employes.map((employeData) => {
       return (
         <div className=" perfil-buscador card">
           <Link
@@ -146,11 +114,7 @@ function HomeView() {
         </div>
       </div>
       <div className="grid  ">
-        <div className="grid-row ">
-          {searchResults === ""
-            ? printAllBikoEmployes()
-            : printSearchedEmploye()}
-        </div>
+        <div className="grid-row ">{printEmployes()}</div>
       </div>
     </div>
   );
