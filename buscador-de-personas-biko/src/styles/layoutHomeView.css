@@ -5,11 +5,7 @@
   position: relative;
   width: 1440px;
   height: 1596px;
-
-  /* Biko/Neutros/Blanco */
-
   background: #ffffff;
-  border: 1 black;
 }
 
 .logo {
@@ -223,14 +219,4 @@
   flex-grow: 0;
   margin-right: 30px;
   margin-bottom: 30px;
-}
-
-.bg-pattern {
-  position: absolute;
-  width: 696px;
-  height: 693px;
-  left: 720px;
-  top: 192px;
-
-  background: url(../images/bg-pattern.png);
 }
