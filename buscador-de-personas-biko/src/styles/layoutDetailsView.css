@@ -79,7 +79,6 @@
 
 .side-red-text {
   position: static;
-  /* width: 164px; */
   height: 32px;
   left: 0px;
   top: 168px;
@@ -93,7 +92,6 @@
   flex: none;
   order: 1;
   flex-grow: 0;
-  /* margin: 24px 0px; */
 }
 
 .icons-container {
@@ -106,7 +104,6 @@
   flex: none;
   order: 2;
   flex-grow: 0;
-  /* margin: 24px 0px; */
 }
 
 .rocket-container {
@@ -129,7 +126,7 @@
   position: absolute;
   width: 128px;
   height: 24px;
-  left: 175px; /*last 105px*/
+  left: 175px;
 }
 .rocket {
   position: static;
@@ -145,7 +142,6 @@
 
 .team-text {
   position: static;
-  /* width: 45px; */
   height: 24px;
   left: 18.85px;
   top: 11.5px;
@@ -160,7 +156,6 @@
   flex: none;
   order: 1;
   flex-grow: 0;
-  /* margin: 0px 12px; */
 }
 
 .calendar {
@@ -177,7 +172,6 @@
 
 .calendar-text {
   position: static;
-  /* width: 92px; */
   height: 24px;
   left: 14.6px;
   top: 11.5px;
@@ -193,7 +187,6 @@
   flex: none;
   order: 1;
   flex-grow: 0;
-  /* margin: 0px 12px; */
 }
 
 .tech-container {
@@ -211,7 +204,6 @@
   flex: none;
   order: 0;
   flex-grow: 0;
-  /* margin: 32px 0px; 32px */
 }
 
 .tech-btn {
@@ -270,7 +262,6 @@
   flex: none;
   order: 1;
   flex-grow: 0;
-  /* margin: 32px 0px; */
 }
 
 .pharagraph-auto-layout {
@@ -283,7 +274,6 @@
   width: 579px;
   height: 140px;
   left: 0px;
-  /* top: 64px; */
 }
 
 .pharagraph {
