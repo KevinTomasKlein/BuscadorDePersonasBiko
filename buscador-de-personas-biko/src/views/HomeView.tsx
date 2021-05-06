@@ -16,6 +16,7 @@ function HomeView() {
     };
     fetchData();
   }, [searchResults]);
+
   function getSearchedData(event: any) {
     event.preventDefault();
     setSearchResults(event.target.elements.searchBox.value);
@@ -31,9 +32,11 @@ function HomeView() {
         employes.push(employe);
       }
     });
-    if (employes.length === 0) {
+
+    if (employes.length === 0 && searchResults !== "") {
       return <p className="input-error">¡¡¡¡Ese Bikoniano no existe!!!!</p>;
     }
+
     let searchPersonResults: any = employes.map((employeData) => {
       return (
         <div className=" perfil-buscador card">
@@ -113,8 +116,8 @@ function HomeView() {
           </form>
         </div>
       </div>
-      <div className="grid  ">
-        <div className="grid-row ">{printEmployes()}</div>
+      <div className="grid">
+        <div className="grid-row">{printEmployes()}</div>
       </div>
     </div>
   );
