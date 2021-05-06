@@ -146,6 +146,25 @@
   color: #899398;
 }
 
+.input-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+
+  position: absolute;
+  width: 706px;
+  height: 60px;
+  left: 132px;
+  top: -80px;
+  font-family: Courier;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22.78px;
+  line-height: 32px;
+  color: #e73f39;
+}
 /*Grid*/
 
 .grid {
@@ -225,19 +244,18 @@
   position: absolute;
   width: 264px;
   height: 264px;
-  background-image: linear-gradient(rgb(247, 247, 125), yellow);
+  background-image: linear-gradient(#ffff7a, #ffff52, #fedd27);
   visibility: hidden;
   opacity: 0;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-
   transition: opacity 0.4s, visibility 0.2s;
 }
 
 .img_employe_data {
   transition: 0.5s;
-  transform: translateY(-1em);
+  transform: translateY(-1rem);
 }
 .card:hover .img_employe_data {
   transform: translateY(0);
@@ -308,4 +326,8 @@
   font-size: 16px;
   line-height: 24px;
   color: #000000;
+}
+
+.card {
+  border: none;
 }
