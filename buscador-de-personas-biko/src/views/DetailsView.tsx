@@ -65,6 +65,13 @@ export function DetailsView({ location }: any) {
                   style={{ width: "264px", height: "264px" }}
                   src={teamMember["ImgUrl"]}
                 ></img>
+                <div className="img_description_layer">
+                  <div className="img_text_container img_employe_data">
+                    <p className="monstserrat">{teamMember["Nombre"]}</p>
+                    <p className="monstserrat">{teamMember["Apellidos"]}</p>
+                    <p className="monstserrat-normal">{teamMember["Rol"]}</p>
+                  </div>
+                </div>
               </div>
             </Link>
           </div>
@@ -103,6 +110,13 @@ export function DetailsView({ location }: any) {
                   }}
                   src={techMember["ImgUrl"]}
                 ></img>
+                <div className="img_description_layer">
+                  <div className="img_text_container img_employe_data">
+                    <p className="monstserrat">{techMember["Nombre"]}</p>
+                    <p className="monstserrat">{techMember["Apellidos"]}</p>
+                    <p className="monstserrat-normal">{techMember["Rol"]}</p>
+                  </div>
+                </div>
               </div>
             </Link>
           </div>
