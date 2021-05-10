@@ -68,7 +68,7 @@ function HomeView() {
     });
     let searchPersonResults: any = searchedPerson.map((employeData) => {
       return (
-        <div className=" perfil-buscador card">
+        <div className="perfil-buscador card">
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
@@ -145,7 +145,7 @@ function HomeView() {
           </form>
         </div>
       </div>
-      <div className="grid  ">
+      <div className="grid ">
         <div className="grid-row ">
           {searchResults === ""
             ? printAllBikoEmployes()
