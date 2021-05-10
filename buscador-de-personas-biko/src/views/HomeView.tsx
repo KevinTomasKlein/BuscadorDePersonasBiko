@@ -39,7 +39,7 @@ function HomeView() {
 
     let searchPersonResults: any = employes.map((employeData) => {
       return (
-        <div className=" perfil-buscador card">
+        <div className="perfil-buscador card">
           <Link
             to={{
               pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,

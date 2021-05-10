@@ -10,12 +10,11 @@ import { DetailsView } from "./views/DetailsView";
 function App() {
   return (
     <BrowserRouter>
-      <div className="">
-        <header className=""></header>
-        <body className="">
+      <div>
+        <header></header>
+        <body>
           <Switch>
-            <Route path="/Employe/:Nombre" component={DetailsView} />
-
+            <Route path="/Employe/" component={DetailsView} />
             <Route path="/" exact component={HomeView} />
           </Switch>
         </body>

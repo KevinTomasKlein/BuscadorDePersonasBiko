@@ -54,7 +54,7 @@ export function DetailsView({ location }: any) {
           <div key={teamMember}>
             <Link
               to={{
-                pathname: `${url}`,
+                pathname: `${url}/${teamMember["Nombre"]} ${teamMember["Apellidos"]}`,
                 state: { employeData: teamMember, AllEmployes: AllEmployes },
               }}
             >
@@ -96,7 +96,7 @@ export function DetailsView({ location }: any) {
           <div key={techMember}>
             <Link
               to={{
-                pathname: `${url}`,
+                pathname: `${url}/${techMember["Nombre"]} ${techMember["Apellidos"]}`,
                 state: { employeData: techMember, AllEmployes: AllEmployes },
               }}
             >
@@ -129,7 +129,7 @@ export function DetailsView({ location }: any) {
     <div className="main-container">
       <img
         alt="employe-image"
-        className=" img_details"
+        className="img_details"
         src={employeDetails["ImgUrl"]}
       ></img>
       <div className="data-container">
@@ -141,16 +141,16 @@ export function DetailsView({ location }: any) {
         <p className="side-red-text">{"(" + employeDetails["Rol"] + ")"}</p>
 
         <div className="icons-container">
-          <div className="rocket-container ">
-            <RocketOutlined className="rocket " />
+          <div className="rocket-container">
+            <RocketOutlined className="rocket" />
             <p className="team-text">{employeDetails["Equipo"]}</p>
           </div>
           {getDate()}
         </div>
         <div className="text-btn-container">
           {getTechnologies()}
-          <div className=" pharagraph-container ">
-            <p className="pharagraph-auto-layout ">
+          <div className=" pharagraph-container">
+            <p className="pharagraph-auto-layout">
               <span className="pharagraph">{employeDetails["Sobre mí"]}</span>
             </p>
           </div>
