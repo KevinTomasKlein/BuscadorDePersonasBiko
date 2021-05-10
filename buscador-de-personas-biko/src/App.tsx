@@ -5,8 +5,6 @@ import "./styles/layoutHomeView.css";
 import "./styles/layoutDetailsView.css";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { DetailsView } from "./views/DetailsView";
-import logoBiko from "./images/logoBiko.png";
-import React from "react";
 
 function App() {
   return (
