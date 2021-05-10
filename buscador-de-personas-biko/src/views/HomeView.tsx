@@ -23,7 +23,7 @@ function HomeView() {
   }
 
   function printEmployes() {
-    datosBiko.map((employe) => {
+    datosBiko.forEach((employe) => {
       let info =
         employe["Nombre"].toString().toLowerCase() +
         " " +
@@ -47,7 +47,7 @@ function HomeView() {
             }}
           >
             <img
-              alt="employee-image"
+              alt="employe"
               src={employeData["ImgUrl"]}
               className="picture-grid "
             ></img>

@@ -39,7 +39,7 @@ export function DetailsView({ location }: any) {
   }
 
   function GetTeamMembers() {
-    AllEmployes.map((employe) => {
+    AllEmployes.forEach((employe) => {
       if (
         employe["Equipo"] === employeDetails["Equipo"] &&
         teamMembers.length < 3
@@ -60,7 +60,7 @@ export function DetailsView({ location }: any) {
             >
               <div className="card team-picture">
                 <img
-                  alt="employee-image"
+                  alt="employe"
                   className="card-image mx-auto"
                   style={{ width: "264px", height: "264px" }}
                   src={teamMember["ImgUrl"]}
@@ -81,7 +81,7 @@ export function DetailsView({ location }: any) {
   }
 
   function getTechMembers() {
-    AllEmployes.map((employe) => {
+    AllEmployes.forEach((employe) => {
       if (
         employe["Tecnologias"] === employeDetails["Tecnologias"] &&
         techMembers.length < 4
@@ -102,7 +102,7 @@ export function DetailsView({ location }: any) {
             >
               <div className="card members-picture">
                 <img
-                  alt="employee-image"
+                  alt="employe"
                   className="card-image "
                   style={{
                     width: "264px",
@@ -128,7 +128,7 @@ export function DetailsView({ location }: any) {
   return (
     <div className="main-container">
       <img
-        alt="employe-image"
+        alt="employe"
         className="img_details"
         src={employeDetails["ImgUrl"]}
       ></img>
