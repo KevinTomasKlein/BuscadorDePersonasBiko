@@ -1,7 +1,8 @@
 import { RocketOutlined } from "@ant-design/icons";
-import { Link, useRouteMatch } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 import logoBiko from "../images/logoBiko.png";
 import { CalendarOutlined } from "@ant-design/icons";
+import ListOfMembers from "../components/ListOfMembers";
 export function DetailsView({ location }: any) {
   const employeDetails = location.state.employeData;
   const AllEmployes: any[] = location.state.AllEmployes;
@@ -50,32 +51,11 @@ export function DetailsView({ location }: any) {
 
     return (
       <div className="d-flex">
-        {teamMembers.map((teamMember) => (
-          <div key={teamMember}>
-            <Link
-              to={{
-                pathname: `${url}/${teamMember["Nombre"]} ${teamMember["Apellidos"]}`,
-                state: { employeData: teamMember, AllEmployes: AllEmployes },
-              }}
-            >
-              <div className="card team-picture">
-                <img
-                  alt="employe"
-                  className="card-image mx-auto"
-                  style={{ width: "264px", height: "264px" }}
-                  src={teamMember["ImgUrl"]}
-                ></img>
-                <div className="img_description_layer">
-                  <div className="img_text_container img_employe_data">
-                    <p className="monstserrat">{teamMember["Nombre"]}</p>
-                    <p className="monstserrat">{teamMember["Apellidos"]}</p>
-                    <p className="monstserrat-normal">{teamMember["Rol"]}</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        ))}
+        <ListOfMembers
+          members={teamMembers}
+          AllEmployes={AllEmployes}
+          url={url}
+        />
       </div>
     );
   }
@@ -83,7 +63,7 @@ export function DetailsView({ location }: any) {
   function getTechMembers() {
     AllEmployes.forEach((employe) => {
       if (
-        employe["Tecnologias"] === employeDetails["Tecnologias"] &&
+        employe.Tecnologias === employeDetails.Tecnologias &&
         techMembers.length < 4
       ) {
         techMembers.push(employe);
@@ -92,35 +72,7 @@ export function DetailsView({ location }: any) {
 
     return (
       <div className="d-flex">
-        {techMembers.map((techMember) => (
-          <div key={techMember}>
-            <Link
-              to={{
-                pathname: `${url}/${techMember["Nombre"]} ${techMember["Apellidos"]}`,
-                state: { employeData: techMember, AllEmployes: AllEmployes },
-              }}
-            >
-              <div className="card members-picture">
-                <img
-                  alt="employe"
-                  className="card-image "
-                  style={{
-                    width: "264px",
-                    height: "264px",
-                  }}
-                  src={techMember["ImgUrl"]}
-                ></img>
-                <div className="img_description_layer">
-                  <div className="img_text_container img_employe_data">
-                    <p className="monstserrat">{techMember["Nombre"]}</p>
-                    <p className="monstserrat">{techMember["Apellidos"]}</p>
-                    <p className="monstserrat-normal">{techMember["Rol"]}</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        ))}
+        <ListOfMembers members={techMembers} AllEmployes={AllEmployes} />
       </div>
     );
   }
@@ -130,20 +82,20 @@ export function DetailsView({ location }: any) {
       <img
         alt="employe"
         className="img_details"
-        src={employeDetails["ImgUrl"]}
+        src={employeDetails.ImgUrl}
       ></img>
       <div className="data-container">
-        <h1 className="side-bold-text">{employeDetails["Nombre"] + " "}</h1>
+        <h1 className="side-bold-text">{employeDetails.Nombre + " "}</h1>
         <h1 className="side-bold-text">
-          <b>{employeDetails["Apellidos"]}</b>
+          <b>{employeDetails.Apellidos}</b>
         </h1>
 
-        <p className="side-red-text">{"(" + employeDetails["Rol"] + ")"}</p>
+        <p className="side-red-text">{"(" + employeDetails.Rol + ")"}</p>
 
         <div className="icons-container">
           <div className="rocket-container">
             <RocketOutlined className="rocket" />
-            <p className="team-text">{employeDetails["Equipo"]}</p>
+            <p className="team-text">{employeDetails.Equipo}</p>
           </div>
           {getDate()}
         </div>
@@ -151,7 +103,7 @@ export function DetailsView({ location }: any) {
           {getTechnologies()}
           <div className=" pharagraph-container">
             <p className="pharagraph-auto-layout">
-              <span className="pharagraph">{employeDetails["Sobre mí"]}</span>
+              <span className="pharagraph">{employeDetails.SobreMi}</span>
             </p>
           </div>
         </div>
