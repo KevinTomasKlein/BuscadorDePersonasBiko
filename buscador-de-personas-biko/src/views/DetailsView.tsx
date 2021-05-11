@@ -17,7 +17,7 @@ export function DetailsView({ location }: any) {
           <CalendarOutlined className="calendar" />
 
           <p className="calendar-text">
-            {"Desde" + " "}
+            {"Desde "}
             <b>{employeDetails["Fecha incorporación a Biko"].split("/")[2]}</b>
           </p>
         </div>

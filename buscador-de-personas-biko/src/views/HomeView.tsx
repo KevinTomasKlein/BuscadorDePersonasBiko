@@ -1,68 +1,42 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 import logoBiko from "../images/logoBiko.png";
-import "bootstrap/dist/css/bootstrap.css";
 import { SearchOutlined } from "@ant-design/icons";
+import { useLocation } from "wouter";
+import getBikoData from "../services/getBikoData";
+import ListOfEmployes from "../components/ListOfEmployes";
 function HomeView() {
   const [datosBiko, setDatosBiko] = useState<any[]>([]);
-  const [searchResults, setSearchResults] = useState("");
+  const [searchWord, setSearchword] = useState("");
+  const [path, pushLocation] = useLocation();
   const employes: any[] = [];
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("dataBiko.json");
-      setDatosBiko(data);
-    };
-    fetchData();
-  }, [searchResults]);
 
-  function getSearchedData(event: any) {
-    event.preventDefault();
-    setSearchResults(event.target.elements.searchBox.value);
-  }
+  useEffect(() => {
+    getBikoData().then((employes: any) => setDatosBiko(employes));
+  }, [path]);
 
   function printEmployes() {
     datosBiko.forEach((employe) => {
       let info =
-        employe["Nombre"].toString().toLowerCase() +
+        employe.Nombre.toString().toLowerCase() +
         " " +
-        employe["Apellidos"].toString().toLowerCase();
-      if (info.includes(searchResults.toLowerCase().trim())) {
+        employe.Apellidos.toString().toLowerCase();
+      if (info.includes(searchWord.toLowerCase().trim())) {
         employes.push(employe);
       }
     });
 
-    if (employes.length === 0 && searchResults !== "") {
+    if (employes.length === 0 && searchWord !== "") {
       return <p className="input-error">¡¡¡¡Ese Bikoniano no existe!!!!</p>;
     }
 
-    let searchPersonResults: any = employes.map((employeData) => {
-      return (
-        <div className="perfil-buscador card">
-          <Link
-            to={{
-              pathname: `/Employe/${employeData["Nombre"]} ${employeData["Apellidos"]}`,
-              state: { employeData: employeData, AllEmployes: datosBiko },
-            }}
-          >
-            <img
-              alt="employe"
-              src={employeData["ImgUrl"]}
-              className="picture-grid "
-            ></img>
-            <div className="img_description_layer">
-              <div className="img_text_container img_employe_data">
-                <p className="monstserrat">{employeData["Nombre"]}</p>
-                <p className="monstserrat">{employeData["Apellidos"]}</p>
-                <p className="monstserrat-normal">{employeData["Rol"]}</p>
-              </div>
-            </div>
-          </Link>
-        </div>
-      );
-    });
-    return searchPersonResults;
+    return <ListOfEmployes employes={employes} datosBiko={datosBiko} />;
+  }
+
+  function getSearchedData(event: any) {
+    event.preventDefault();
+    setSearchword(event.target.elements.searchBox.value);
+    pushLocation(`/${searchWord}`);
   }
 
   return (
