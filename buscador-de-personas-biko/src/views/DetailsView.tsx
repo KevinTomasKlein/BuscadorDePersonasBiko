@@ -12,14 +12,14 @@ export function DetailsView({ location }: any) {
   let { url } = useRouteMatch();
 
   function getDate() {
-    if (employeDetails["Fecha incorporación a Biko"] !== undefined) {
+    if (employeDetails.FechaIncorporacion !== undefined) {
       return (
         <div className="calendar-container ">
           <CalendarOutlined className="calendar" />
 
           <p className="calendar-text">
             {"Desde "}
-            <b>{employeDetails["Fecha incorporación a Biko"].split("/")[2]}</b>
+            <b>{employeDetails.FechaIncorporacion.split("/")[2]}</b>
           </p>
         </div>
       );
@@ -28,7 +28,7 @@ export function DetailsView({ location }: any) {
     }
   }
   function getTechnologies() {
-    const technologies: string[] = employeDetails["Tecnologias"].split(" ");
+    const technologies: string[] = employeDetails.Tecnologias.split(" ");
 
     return (
       <div className="tech-container">
@@ -41,10 +41,7 @@ export function DetailsView({ location }: any) {
 
   function GetTeamMembers() {
     AllEmployes.forEach((employe) => {
-      if (
-        employe["Equipo"] === employeDetails["Equipo"] &&
-        teamMembers.length < 3
-      ) {
+      if (employe.Equipo === employeDetails.Equipo && teamMembers.length < 3) {
         teamMembers.push(employe);
       }
     });
